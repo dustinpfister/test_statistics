@@ -16,7 +16,7 @@ let getMean = (data) => {
     }) / data.length;
 };
 
-let pop = genRandomPopulation(10000);
+let pop = genRandomPopulation(100);
 
 let mean = getMean(pop);
 
