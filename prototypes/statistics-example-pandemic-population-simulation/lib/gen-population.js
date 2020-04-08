@@ -1,6 +1,7 @@
 // generate a population
 var genPopulation = (function () {
 
+    // parse an options arguments object
     var parseOptions = function (opt) {
         opt = opt || {};
         opt.pop = opt.pop || 1000;
@@ -21,10 +22,39 @@ var genPopulation = (function () {
         return opt;
     };
 
-    return function (opt) {
+    var getAgeGroup = function (opt, roll) {
+        var i = opt.ageGroups.length,
+        group,
+        per = 0;
+        while (i--) {
+            group = opt.ageGroups[i];
+            per += group.per;
+            if (roll < per) {
+                return group;
+            }
+        }
+        return group;
+    };
 
+    var generateObjects = function (opt) {
         opt = parseOptions(opt);
+        var i = opt.pop,
+        pop = [],
+        ag;
+        while (i--) {
+            ag = getAgeGroup(opt, Math.random());
+            pop.push({
+                age: Math.floor(ag.range[0] + Math.random() * (ag.range[1] - ag.range[0])),
+                sick: false,
+                alive: true
+            });
+        }
 
+    };
+
+    // public method
+    return function (opt) {
+        return generateObjects(opt);
     }
 
 });
