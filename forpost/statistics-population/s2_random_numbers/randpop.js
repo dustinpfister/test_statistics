@@ -10,14 +10,31 @@ let genRandomPopulation = (popSize) => {
 };
 
 // get the mean of the given population or sample
-let getMean = (data) => {
-    return data.reduce(function (acc, n) {
+let getMean = (pop) => {
+    return pop.reduce(function (acc, n) {
         return acc + n;
-    }) / data.length;
+    }) / pop.length;
 };
 
-let pop = genRandomPopulation(100);
+let getSample = (pop, si, sampSize) => {
+    let len = pop.length;
+    sampSize = sampSize === undefined ? len : sampSize;
+    si = si === undefined ? len - sampSize : si;
+    let ei = si + sampSize;
+    return pop.slice(si, ei);
+}
 
-let mean = getMean(pop);
+let pop = genRandomPopulation(100000);
 
-console.log(mean);
+console.log(getMean( getSample(pop, 0, 10000) ));
+console.log(getMean( getSample(pop, 250, 10000) ));
+console.log(getMean( getSample(pop, 3500, 10000) ));
+console.log(getMean(pop));
+
+/*
+Example output
+3.5104
+3.5109
+3.5012
+3.49523
+*/
