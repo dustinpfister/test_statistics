@@ -7,16 +7,16 @@ var genPopulation = (function () {
         opt.pop = opt.pop || 100;
         opt.ageGroups = opt.ageGroups || [{
                     range: [0, 19],
-                    per: 0.70
+                    per: 0.40
                 }, {
                     range: [20, 39],
-                    per: 0.20
+                    per: 0.30
                 }, {
                     range: [40, 59],
-                    per: 0.05
+                    per: 0.20
                 }, {
                     range: [60, 99],
-                    per: 0.05
+                    per: 0.10
                 }
             ];
         return opt;
@@ -87,6 +87,8 @@ pop.sort(function (a, b) {
 
 pop = pop.map(function (obj) {
         return virus.processPopObject(obj);
-    });
+    }).filter(function (obj) {
+        return !obj.alive;
+    })
 
-console.log(pop);
+    console.log(pop);
