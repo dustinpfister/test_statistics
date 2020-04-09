@@ -45,7 +45,6 @@ var genPopulation = (function () {
             ag = getAgeGroup(opt, Math.random());
             pop.push({
                 age: Math.floor(ag.range[0] + Math.random() * (ag.range[1] - ag.range[0])),
-                sick: false,
                 alive: true
             });
         }
@@ -61,8 +60,21 @@ var genPopulation = (function () {
 }
     ());
 
-var pop = genPopulation();
+var virus = {
 
+    processPopObject: function (obj) {
+        var roll = Math.random(),
+        agePer = obj.age / 100,
+        deathRate = 0.05 + 0.40 * agePer;
+        if (roll < deathRate) {
+            obj.alive = false;
+        }
+        return obj;
+    }
+
+};
+
+var pop = genPopulation();
 pop.sort(function (a, b) {
     if (a.age > b.age) {
         return -1;
@@ -72,5 +84,9 @@ pop.sort(function (a, b) {
     }
     return 0;
 });
+
+pop = pop.map(function (obj) {
+        return virus.processPopObject(obj);
+    });
 
 console.log(pop);
