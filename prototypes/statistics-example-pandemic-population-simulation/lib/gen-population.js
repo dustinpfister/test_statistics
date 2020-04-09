@@ -4,19 +4,19 @@ var genPopulation = (function () {
     // parse an options arguments object
     var parseOptions = function (opt) {
         opt = opt || {};
-        opt.pop = opt.pop || 1000;
+        opt.pop = opt.pop || 100;
         opt.ageGroups = opt.ageGroups || [{
                     range: [0, 19],
-                    per: 0.30
+                    per: 0.70
                 }, {
                     range: [20, 39],
-                    per: 0.40
-                }, {
-                    range: [40, 59],
                     per: 0.20
                 }, {
+                    range: [40, 59],
+                    per: 0.05
+                }, {
                     range: [60, 99],
-                    per: 0.10
+                    per: 0.05
                 }
             ];
         return opt;
@@ -49,6 +49,7 @@ var genPopulation = (function () {
                 alive: true
             });
         }
+        return pop;
 
     };
 
@@ -57,4 +58,19 @@ var genPopulation = (function () {
         return generateObjects(opt);
     }
 
+}
+    ());
+
+var pop = genPopulation();
+
+pop.sort(function (a, b) {
+    if (a.age > b.age) {
+        return -1;
+    }
+    if (a.age < b.age) {
+        return 1;
+    }
+    return 0;
 });
+
+console.log(pop);
