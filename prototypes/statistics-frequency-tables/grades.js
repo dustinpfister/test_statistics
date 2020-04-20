@@ -26,3 +26,8 @@ var grades = ['c', 'a', 'f', 'f', 'b', 'c', 'f', 'a', 'f', 'd'];
 var table = makeFreqTable(grades);
 
 console.log(table);
+// [ { grade: 'f', count: 4 },
+//   { grade: 'c', count: 2 },
+//   { grade: 'a', count: 2 },
+//   { grade: 'b', count: 1 },
+//   { grade: 'd', count: 1 } ] 
