@@ -1,0 +1,3 @@
+# statistics-experimental-design
+
+This is my take on a few examples of [experimental-design](https://en.wikipedia.org/wiki/Design_of_experiments) in statistics. The general idea that came to mind when I started this was what to do when true full data is not available? There is trying to get a sample by way of surveying and then extrapolating from that sample of data assuming that sample will reflect the remaining sum of a total population of data. However if for some reason it is not even possible to get that, then the only alterative at that point would be to guess. 
