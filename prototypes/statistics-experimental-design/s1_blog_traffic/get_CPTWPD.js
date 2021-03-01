@@ -1,16 +1,12 @@
-
 // WC   => Word Count
-// CPTW => Clicks Per Thousand Words Per Day
+// Traffic => Number of clicks for a post in search console 
 // days => Number of 24 hour day(s)
-
-// retruns => Traffic per days
-
-let guessPostTraffic = (WC, CPTWPD, days) => {
+// retruns => CPTWPD ( Clicks Per Thousand Words Per Day )
+let getCPTWPD = (WC, traffic, days) => {
     WC = WC === undefined ? 500 : WC;
-    CPTWPD = CPTWPD === undefined ? 1 : CPTWPD;
+    traffic = traffic === undefined ? 0 : traffic;
     days = days === undefined ? 1 : days;
-    return WC * (CPTWPD / 1000) * days;
+    return traffic / days / WC * 1000;
 };
-
-console.log( guessPostTraffic(1000, 1, 7) );   // 7
-console.log( guessPostTraffic(300, 120, 31) ); // 1116
+console.log( getCPTWPD(1000, 7, 7) );     // 1
+console.log( getCPTWPD(300, 1116, 31) );  // 120
