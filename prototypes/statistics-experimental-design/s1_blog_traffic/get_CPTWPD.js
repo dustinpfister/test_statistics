@@ -1,3 +1,4 @@
+
 // WC   => Word Count
 // CPTW => Clicks Per Thousand Words Per Day
 // days => Number of 24 hour day(s)
