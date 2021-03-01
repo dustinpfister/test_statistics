@@ -16,7 +16,9 @@ console.log( getCPTWPD(1000, 7, 7) );     // 1
 // has a CPTWPD of 120
 console.log( getCPTWPD(300, 1116, 31) );  // 120
 
-// PLUG IN SOME REAL DATA FROM SEARCH CONSOLE
+/********** ********** **********
+ PLUG IN SOME REAL DATA FROM SEARCH CONSOLE
+*********** ********** *********/
 
 // lodash includes is my best post as of this writing
 console.log('best post: ', getCPTWPD(875, 582, 28) );
@@ -37,3 +39,11 @@ console.log('js-javascript-foreach: ', getCPTWPD(3805, 29, 28) ); // 0.272198235
 console.log('lodash_includes : ', getCPTWPD(875, 582, 28) ); // 23.755102040816325
 console.log('lodash_groupby : ', getCPTWPD(856, 549, 28) ); // 22.905540720961284
 console.log('lodash_sum : ', getCPTWPD(800, 502, 28) ); // 22.410714285714285
+
+/********** ********** **********
+ PLUG IN SOME THEORETICAL DATA
+*********** ********** *********/
+
+console.log(  getCPTWPD(siteWideTotalWC, 100000, 28) ); // 5.085100168337156
+console.log(  getCPTWPD(siteWideTotalWC, 250000, 28) ); // 12.712750420842893
+console.log(  getCPTWPD(siteWideTotalWC, 500000, 28) ); // 25.425500841685786
