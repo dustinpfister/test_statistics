@@ -14,5 +14,27 @@ let getPostTraffic = (WC, CPTWPD, days) => {
 console.log( getPostTraffic(1000, 1, 7) );   // 7
 console.log( getPostTraffic(300, 120, 31) ); // 1116
 
-// lodash includes
-console.log( getPostTraffic(875, 23.755102040816325,28) );
+// lodash includes is mu best post as of this writing
+let bestPost = {
+  wc: 875,
+  CPTWPD: 23.755102040816325,
+  days: 28,
+  traffic: 0
+};
+bestPost.traffic = getPostTraffic(bestPost.wc, bestPost.CPTWPD, bestPost.days);
+console.log( 'best post: ', bestPost.traffic );
+// best post: 582
+
+// site wide
+let siteWide = {
+  wc: 702332,
+  CPTWPD: 0.9153180303006881,
+  days: 28,
+  traffic: 0
+};
+siteWide.traffic = getPostTraffic(siteWide.wc, siteWide.CPTWPD, siteWide.days);
+console.log('site wide: ', siteWide.traffic);
+// site wide: 18000
+
+
+console.log(siteWide.traffic / 813);
