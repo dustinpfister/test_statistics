@@ -10,3 +10,6 @@ let getCPTWPD = (WC, traffic, days) => {
 };
 console.log( getCPTWPD(1000, 7, 7) );     // 1
 console.log( getCPTWPD(300, 1116, 31) );  // 120
+
+// lodash includes
+console.log( getCPTWPD(875, 582, 28) );   
