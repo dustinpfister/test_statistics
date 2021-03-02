@@ -5,7 +5,7 @@ var die = function(){
 
 var test = function(){
     var i = 0,
-    len = 10000,
+    len = 100000,
     d1,d2,
     dubSix = 0;
     while(i < len){
