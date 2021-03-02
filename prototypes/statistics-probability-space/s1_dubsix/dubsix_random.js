@@ -16,7 +16,7 @@ var test = function(){
         }
         i += 1;
     }
-    return dubSix / len;
+    return dubSix / len * 100;
 };
 
 console.log( test() );
