@@ -22,7 +22,7 @@ var getPers = function(result){
     });
 };
 
-console.log( getPers( trial(1) ) );
-console.log( getPers( trial(2) ) );
-console.log( getPers( trial(3) ) );
-console.log( getPers( trial(4) ) );
+console.log( getPers( trial(1) ) ); // [ 100, 0 ]
+console.log( getPers( trial(2) ) ); // [ 50, 50 ]
+console.log( getPers( trial(3) ) ); // [ 66.66666666666666, 33.33333333333333 ]
+console.log( getPers( trial(4) ) ); // [ 50, 50 ]
