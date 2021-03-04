@@ -12,10 +12,13 @@ var mineMethods = {
             return count;
         }
         return 0;
+    },
+    singlePure: function(ore, count){
+        return Math.round(ore.chance * count);
     }
 };
 
-var mine = function(count, ores, mineMethod){
+var mine = function(count, mineMethod, ores){
     ores = ores === undefined ? defaultOres : ores;
     count = count === undefined ? 1 : count;
     mineMethod = mineMethod === undefined ? mineMethods.singleRandom : mineMethod;
@@ -37,11 +40,18 @@ onHand = {
 };
 
 while(i < mineCount){
-    var mineResult = mine(1);
+    var mineResult = mine(1, mineMethods.singleRandom);
     mineResult.forEach(function(oreObj){
         onHand[oreObj.type] += oreObj.amount;
     });
     i += 1;
 }
 
-console.log(onHand);
+
+console.log( mine(mineCount, mineMethods.singlePure) );
+// [ { type: 'iron', amount: 1000 },
+//   { type: 'copper', amount: 100 },
+//   { type: 'gold', amount: 10 } ]
+
+// random values that should be around the result of using the pure function
+console.log( onHand );
