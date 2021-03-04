@@ -1,11 +1,18 @@
 
-var dirs = [0, Math.PI * 0.5, Math.PI, Math.PI * 1.5];
-var step = function(){
-   var dir = dirs[3]; //dirs[Math.floor(Math.random() * dirs.length)];
-   return {
-       x: Math.round(Math.cos(dir)),
-       y: Math.round(Math.sin(dir))
-   };
-};
+var ores = [
+    { type: 'iron', chance: 1 },
+    { type: 'copper': chance: 0.1 },
+    { type: 'gold': chance: 0.01 }
+];
 
-console.log(step())
+
+var mine = function(ores, count){
+    count = count === undefined ? 1 : count;
+    return ores.map(function(oreObj){
+        
+        return {
+            type: oreObj.type,
+            count: count
+        };
+    });
+};
