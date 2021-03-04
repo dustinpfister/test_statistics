@@ -7,11 +7,15 @@ var defaultOres = [
 
 var mineMethods = {
     singleRandom: function(ore, count){
-        return Math.floor( Math.random() * ore.chance );
+        var roll = Math.random();
+        if(roll <= ore.chance){
+            return count;
+        }
+        return 0;
     }
 };
 
-var mine = function(ores, count, mineMethod){
+var mine = function(count, ores, mineMethod){
     ores = ores === undefined ? defaultOres : ores;
     count = count === undefined ? 1 : count;
     mineMethod = mineMethod === undefined ? mineMethods.singleRandom : mineMethod;
@@ -24,4 +28,20 @@ var mine = function(ores, count, mineMethod){
     });
 };
 
-console.log( mine() );
+var i = 0,
+mineCount = 1000,
+onHand = {
+    iron: 0,
+    copper: 0,
+    gold: 0
+};
+
+while(i < mineCount){
+    var mineResult = mine(1);
+    mineResult.forEach(function(oreObj){
+        onHand[oreObj.type] += oreObj.amount;
+    });
+    i += 1;
+}
+
+console.log(onHand);
