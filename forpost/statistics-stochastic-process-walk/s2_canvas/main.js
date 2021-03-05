@@ -26,15 +26,20 @@ var state = {
     pool: poolMod.create()
 };
 
+// walk object(s)
+var obj = state.pool.objects[0];
+var delta = walk(obj);
+
+obj.x += delta.x;
+obj.y += delta.y;
+
 // draw
 var ctx = state.canvasObj.ctx;
 draw.background(ctx, state);
 draw.grid(ctx, state);
 draw.pool(ctx, state);
 
-console.log(state);
-
 // random deltas
-console.log(walk());
+// console.log(walk());
 // always 4 ( { x: -1, y: 0 } )
-console.log( walk({x:0, y:0, heading:1}, walk.wm.useHeading, [0, 4]) );
+// console.log( walk({x:0, y:0, heading:1}, walk.wm.useHeading, [0, 4]) );
