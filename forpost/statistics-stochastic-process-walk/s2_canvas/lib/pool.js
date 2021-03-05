@@ -2,8 +2,8 @@ var poolMod = (function(){
     var api = {};
     api.create = function(){
         var obj = {
-            x: 0,
-            y: 0
+            x: 3,
+            y: 3
         };
         var pool = {
             objects: [obj]

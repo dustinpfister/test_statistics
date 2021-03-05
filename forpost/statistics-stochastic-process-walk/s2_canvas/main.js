@@ -5,7 +5,13 @@
             width: 640,
             height: 480
         }),
-        grid: grid.create(),
+        grid: grid.create({
+            w: 7,
+            h: 7,
+            xOffset: 320 - 64 * 3.5,
+            yOffset: 240 - 64 * 3.5,
+            cellSize: 64
+        }),
         pool: poolMod.create()
     };
     // app loop
@@ -24,7 +30,7 @@
     loop();
     // click canvas to call loop
     state.canvasObj.canvas.addEventListener('click', function(e){
-    loop();
+        loop();
     });
 }());
 // random deltas

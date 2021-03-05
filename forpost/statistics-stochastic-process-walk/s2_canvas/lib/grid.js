@@ -24,9 +24,9 @@ var grid  = (function(){
         var grid = {
             w : opt.w || 5,
             h : opt.h || 5,
-            xOffset: 80,
-            yOffset: 80,
-            cellSize: 32,
+            xOffset: opt.xOffset || 80,
+            yOffset: opt.yOffset || 80,
+            cellSize: opt.cellSize || 32,
             cells: []
         };
         grid.cells = createCells(grid);
