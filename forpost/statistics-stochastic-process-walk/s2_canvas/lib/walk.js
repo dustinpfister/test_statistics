@@ -4,6 +4,14 @@ var walk = (function(){
     // [0,2,4,6];        => 4 dir movement
     // [6];              => always go up
     var default_dirs = [0,2,4,6];
+    // clamp deltas
+    var clampDelta = function(obj, delta, grid){
+        delta.x = obj.x + delta.x < 0 ? 0: delta.x;
+        delta.x = obj.x + delta.x >= grid.w ? 0: delta.x;
+        delta.y = obj.y + delta.y < 0 ? 0: delta.y;
+        delta.y = obj.y + delta.y >= grid.h ? 0: delta.y;
+        return delta;
+    };
     // built in walk methods
     var walkMethods = {
         // random dir
@@ -26,10 +34,13 @@ var walk = (function(){
         // convert to radian
         var radian = Math.PI * 2 / 8 * d;
         // use Sin And Cos to return delta values for x and y
-        return {
+        var delta = {
             x: Math.round(Math.cos(radian)),
             y: Math.round(Math.sin(radian))
         };
+        // clamp deltas that will move an object out of a grid
+        delta = clampDelta(obj, delta, grid);
+        return delta;
     };
     // make walk methods public
     api.wm = walkMethods;
