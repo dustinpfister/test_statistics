@@ -1,9 +1,10 @@
 var poolMod = (function(){
     var api = {};
-    api.create = function(){
+    api.create = function(opt){
+        opt = opt || {};
         var obj = {
-            x: 3,
-            y: 3
+            x: opt.sx || 0,
+            y: opt.sy || 0
         };
         var pool = {
             objects: [obj]

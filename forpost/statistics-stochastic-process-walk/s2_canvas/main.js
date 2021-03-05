@@ -12,13 +12,16 @@
             yOffset: 240 - 64 * 3.5,
             cellSize: 64
         }),
-        pool: poolMod.create()
+        pool: poolMod.create({
+            sx: 3,
+            sy: 3
+        })
     };
     // app loop
     var loop = function(){
         // walk object(s)
         var obj = state.pool.objects[0];
-        var delta = walk(obj, state.grid, state.pool);
+        var delta = walk(obj, state.grid, state.pool, walk.wm.rnd, walk.dirs.eight);
         obj.x += delta.x;
         obj.y += delta.y;
         // draw

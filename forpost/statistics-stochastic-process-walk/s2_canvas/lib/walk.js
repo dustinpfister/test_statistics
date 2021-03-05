@@ -44,6 +44,11 @@ var walk = (function(){
     };
     // make walk methods public
     api.wm = walkMethods;
+    // public dirs
+    api.dirs = {
+        four: default_dirs,
+        eight: [0,1,2,3,4,5,6,7]
+    };
     // return public API
     return api;
 }());
