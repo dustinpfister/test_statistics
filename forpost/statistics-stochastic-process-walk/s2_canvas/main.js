@@ -1,14 +1,35 @@
+
+var poolMod = (function(){
+    var api = {};
+    api.create = function(){
+        var obj = {
+            x: 0,
+            y: 0
+        };
+        var pool = {
+            objects: [obj]
+        };
+        return pool;
+    };
+    // return public api
+    return api;
+}());
+
+
+
 var state = {
     canvasObj : utils.createCanvas({
         width: 640,
         height: 480
     }),
-    grid: grid.create()
+    grid: grid.create(),
+    pool: poolMod.create()
 };
 
 // draw
 var ctx = state.canvasObj.ctx;
 draw.background(ctx, state);
+draw.grid(ctx, state);
 
 console.log(state);
 

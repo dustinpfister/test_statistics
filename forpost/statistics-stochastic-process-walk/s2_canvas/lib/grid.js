@@ -22,6 +22,9 @@ var grid  = (function(){
         var grid = {
             w : opt.w || 5,
             h : opt.h || 5,
+            xOffset: 32,
+            yOffset: 32,
+            cellSize: 32,
             cells: []
         };
         grid.cells = createCells(grid);
