@@ -11,16 +11,52 @@ var draw = (function(){
     return api;
 }());
 
+var grid  = (function(){
+    // create cells helper
+    var createCells = function(grid){
+        var cells = [];
+        var i = 0,
+        obj,
+        len = grid.w * grid.h;
+        while(i < len){
+            obj = {
+                i : i,
+                x : utils.mod(i, grid.w),
+                y : Math.floor(i / grid.w)
+            };
+            cells.push(obj);
+            i += 1;
+        }
+        return cells;
+    };
+    var api = {};
+    api.create = function(opt){
+        opt = opt || {};
+        var grid = {
+            w : opt.w || 5,
+            h : opt.h || 5,
+            cells: []
+        };
+        grid.cells = createCells(grid);
+        return grid;
+    };
+    // return public api
+    return api;
+}());
+
 var state = {
     canvasObj : utils.createCanvas({
         width: 640,
         height: 480
-    })
+    }),
+    grid: grid.create()
 };
 
 // draw
 var ctx = state.canvasObj.ctx;
 draw.background(ctx, state);
+
+console.log(state);
 
 // random deltas
 console.log(walk());
