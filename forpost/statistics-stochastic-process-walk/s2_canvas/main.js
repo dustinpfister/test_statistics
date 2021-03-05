@@ -3,8 +3,8 @@ var poolMod = (function(){
     var api = {};
     api.create = function(){
         var obj = {
-            x: 0,
-            y: 0
+            x: 2,
+            y: 2
         };
         var pool = {
             objects: [obj]
@@ -30,6 +30,7 @@ var state = {
 var ctx = state.canvasObj.ctx;
 draw.background(ctx, state);
 draw.grid(ctx, state);
+draw.pool(ctx, state);
 
 console.log(state);
 

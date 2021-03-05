@@ -6,6 +6,7 @@ var draw = (function(){
         ctx.fillStyle = style || 'black';
         ctx.fillRect(0,0, canvas.width, canvas.height);
     };
+    // draw grid
     api.grid = function(ctx, state){
         var grid = state.grid;
         ctx.strokeStyle = 'white';
@@ -17,6 +18,25 @@ var draw = (function(){
             ctx.stroke();
             ctx.closePath();
         });
+    };
+    // draw pool
+    api.pool = function(ctx, state){
+        var pool = state.pool,
+        grid = state.grid;
+        ctx.save();
+        ctx.translate(grid.xOffset, grid.yOffset);
+        ctx.strokeStyle = 'black';
+        ctx.fillStyle = 'red';
+        pool.objects.forEach(function(obj){
+            var x = obj.x * grid.cellSize,
+            y = obj.y * grid.cellSize;
+            ctx.beginPath();
+            ctx.rect(x, y, grid.cellSize, grid.cellSize);
+            ctx.fill();
+            ctx.stroke();
+            ctx.closePath();
+        });
+        ctx.restore();
     };
     // return public api
     return api;
