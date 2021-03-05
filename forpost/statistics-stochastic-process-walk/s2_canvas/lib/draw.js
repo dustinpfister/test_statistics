@@ -11,10 +11,8 @@ var draw = (function(){
         ctx.strokeStyle = 'white';
         ctx.fillStyle = 'orange';
         grid.cells.forEach(function(cell){
-            var x = grid.xOffset + cell.x * grid.cellSize,
-            y = grid.yOffset + cell.y * grid.cellSize;
             ctx.beginPath();
-            ctx.rect(x, y, grid.cellSize, grid.cellSize);
+            ctx.rect(cell.x, cell.y, grid.cellSize, grid.cellSize);
             ctx.fill();
             ctx.stroke();
             ctx.closePath();

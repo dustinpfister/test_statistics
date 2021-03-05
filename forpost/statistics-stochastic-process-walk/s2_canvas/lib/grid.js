@@ -8,9 +8,11 @@ var grid  = (function(){
         while(i < len){
             obj = {
                 i : i,
-                x : utils.mod(i, grid.w),
-                y : Math.floor(i / grid.w)
+                X : utils.mod(i, grid.w),
+                Y : Math.floor(i / grid.w)
             };
+            obj.x = grid.xOffset + obj.X * grid.cellSize;
+            obj.y = grid.yOffset + obj.Y * grid.cellSize;
             cells.push(obj);
             i += 1;
         }
