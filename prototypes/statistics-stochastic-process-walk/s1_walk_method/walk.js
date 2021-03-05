@@ -1,21 +1,31 @@
 var walk = (function(){
-    // default dirs
     var dirs = [0, Math.PI * 0.5, Math.PI, Math.PI * 1.5];
+
+    // default dir movement array
+    // [0,1,2,3,4,5,6,7] => 8 dir movement
+    // [0,2,4,6];        => 4 dir movement
+    // [6];              => always go up
+    var default_dirs = [0,2,4,6];
+
     // built in step methods
     var stepMethods = {
-        random: function(){
+        random: function(dirs){
             return dirs[Math.floor(Math.random() * dirs.length)];
         }
     };
     // Public API
-    var api = function(method){
-        var dir = method === undefined ? stepMethods.random(): method(); 
+    var api = function(method, dirs){
+        dirs = dirs === undefined ? default_dirs : dirs;
+        // call step method and get a d num (0-7)
+        var d = method === undefined ? stepMethods.random(dirs): method(dirs);
+        var radian = Math.PI * 2 / 8 * d;
         return {
-            x: Math.round(Math.cos(dir)),
-            y: Math.round(Math.sin(dir))
+            x: Math.round(Math.cos(radian)),
+            y: Math.round(Math.sin(radian))
         };
     };
     // return public API
     return api;
 }());
+
 console.log(walk());
