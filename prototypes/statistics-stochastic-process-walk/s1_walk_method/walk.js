@@ -12,7 +12,7 @@ var walk = (function(){
         },
         // use a heading prop of an object, or default to 0
         useHeading: function(obj, dirs){
-            return obj.heading || 0;
+            return dirs[obj.heading] || 0;
         }
     };
     // Public API
@@ -22,7 +22,7 @@ var walk = (function(){
         // call step method and get a d num (0-7)
         var d = method === undefined ? walkMethods.rnd(obj, dirs): method(obj, dirs);
         // convert to radian
-        var radian = Math.PI * 2 / (dirs.length) * d;
+        var radian = Math.PI * 2 / 8 * d;
         // use Sin And Cos to return delta values for x and y
         return {
             x: Math.round(Math.cos(radian)),
