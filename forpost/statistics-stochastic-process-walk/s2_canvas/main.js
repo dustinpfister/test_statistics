@@ -9,7 +9,7 @@ var state = {
 
 // walk object(s)
 var obj = state.pool.objects[0];
-var delta = walk(obj);
+var delta = walk(obj, state.grid, state.pool);
 
 obj.x += delta.x;
 obj.y += delta.y;
